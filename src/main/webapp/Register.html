@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Customer</title>
+</head>
+<body>
+    <h1>Customer Registration Form</h1>
+    <form action="registerCustomer" method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="contact">Contact:</label><br>
+        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+        <small>Format: 10 digits</small><br><br>
+
+        <label for="creditscore">Credit Score:</label><br>
+        <input type="number" id="creditscore" name="creditscore" min="0" max="900" required>
+        <small>Range: 0 - 900small><br><br>
+
+        <label for="aadhaar">Aadhaar Number:</label><br>
+        <input type="text" id="aadhaar" name="aadhaar" pattern="\d{12}" required></
+        <small>Format: 12 digits</small><br><br>
+
+        <label for="panCard">PAN Card Number:</label><br>
+        <input type="text" id="panCard" name="panCard" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" required>
+        <small>Format: 5 letters, 4 digits, 1 letter</small><br><br>
+
+        <label for="accountNo">Account Number:</label><br>
+        <input type="text" id="accountNo" name="accountNo" required><br><br>
+
+        <label for="accountType">Account Type:</label><br>
+        <select id="accountType" name="accountType" required>
+            <option value="">--Select--</option>
+            <option value="Savings">Savings</option>
+            <option value="Current">Current</option>
+        </select><br><br>
+
+        <label for="balance">Initial Balance:</label><br>
+        <input type="number" id="balance" name="balance" step="0.01" min="0" required><br><br>
+
+        <button type="submit">Register Customer</button>
+    </form>
+</body>
+</html>
