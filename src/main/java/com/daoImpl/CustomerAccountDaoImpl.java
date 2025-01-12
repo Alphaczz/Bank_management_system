@@ -7,11 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.Utils.PasswordUtil;
-import com.dao.CustomerDao;
+import com.dao.CustomerAccountDao;
 import com.main.DBConnection;
+import com.model.Account;
 import com.model.Customer;
 
-public class CustomerDaoImpl implements CustomerDao {
+public class CustomerAccountDaoImpl implements CustomerAccountDao {
 
 
 @Override
@@ -21,13 +22,13 @@ public Connection getConnection() {
 }
 
 @Override
-public int registerCustomer(Customer customer) {
+public int registerCustomer(Customer customer, Account account) {
     int check = 0;
     
     // SQL queries for each step: Insert into Users, Customer, and Account
     String insertUserSQL = "INSERT INTO Users(username, email, password, mobile, role, status) VALUES(?, ?, ?, ?, 'CUSTOMER', 'ACTIVE')";
-    String insertCustomerSQL = "INSERT INTO Customer(user_id, credit_score, address, pan_number, aadhaar_number) VALUES(?, ?, ?, ?, ?)";
-    String insertAccountSQL = "INSERT INTO Account(customer_id, account_type, balance, account_status) VALUES(?, ?, ?, 'ACTIVE')";
+    String insertCustomerSQL = "INSERT INTO Customer(user_id, credit_score, occupation, employer, employer_address, marital_status, address, pan_number, aadhaar_number) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    String insertAccountSQL = "INSERT INTO Account(account_id, customer_id, account_type, balance, account_status) VALUES(?, ?, ?, ?, 'ACTIVE')";
 
     try (Connection con = getConnection()) {
         // Begin transaction
@@ -66,9 +67,10 @@ public int registerCustomer(Customer customer) {
 
                 // Insert into Account table using customer_id
                 try (PreparedStatement pstAccount = con.prepareStatement(insertAccountSQL)) {
-                    pstAccount.setInt(1, customerId); // Use customer_id instead of userId
-                    pstAccount.setString(2, customer.getAccountType());
-                    pstAccount.setDouble(3, customer.getBalance());
+                    pstAccount.setString(1, account.getAccountId()); // Use customer_id instead of userId
+                    pstAccount.setInt(2, account.getCustomerId());
+                    pstAccount.setString(3, account.getAccountType());
+                    pstAccount.setDouble(4, account.getBalance());
                     pstAccount.executeUpdate();
                 }
             }
@@ -110,18 +112,18 @@ public Customer validateCustomer(String email, String password)  {
 
                 if (isPasswordValid) {
                     // If password matches, create and return the Customer object
-                    Customer cus = new Customer(
-                            rs.getInt("user_id"),
-                            rs.getString("username"),
-                            rs.getString("name"),
-                            rs.getString("email"),
-                            rs.getString("password"),
-                            rs.getString("mobile"),
-                            rs.getString("role"),
-                            rs.getString("status"),
-                            null
-                    );
-                    return cus;
+//                    Customer cus = new Customer(
+//                            rs.getInt("user_id"),
+//                            rs.getString("username"),
+//                            rs.getString("name"),
+//                            rs.getString("email"),
+//                            rs.getString("password"),
+//                            rs.getString("mobile"),
+//                            rs.getString("role"),
+//                            rs.getString("status"),
+//                            null
+//                    );
+//                    return cus;
                 }
             }
         } catch (NoSuchAlgorithmException e) {
