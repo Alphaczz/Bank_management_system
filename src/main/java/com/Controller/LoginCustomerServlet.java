@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Utils.JWTUtil;
 import com.Utils.SessionCookieUtil;
-import com.dao.CustomerDao;
-import com.daoImpl.CustomerDaoImpl;
+import com.dao.CustomerAccountDao;
+import com.daoImpl.CustomerAccountDaoImpl;
 import com.model.Customer;
 /**
  * Servlet implementation class LoginCustomerServlet
@@ -25,13 +25,13 @@ public class LoginCustomerServlet extends HttpServlet {
 
      * @see HttpServlet#HttpServlet()
      */
-	private CustomerDao customerDao;
+	private CustomerAccountDao customerDao;
 
      
 
     public LoginCustomerServlet() {
         super();
-        customerDao = new CustomerDaoImpl();
+        customerDao = new CustomerAccountDaoImpl();
         // TODO Auto-generated constructor stub
     }
 

@@ -5,44 +5,43 @@ import java.util.Date;
 public class User {
 	
 		int Id;
-		String UserName;
-		String Name;
-		String Email;
-		String Password;
-		String Contact;
-		String Role;
-		String Status;
+		String username;
+		String name;
+		String email;
+		String password;
+		String mobile;
+		String role;
+		String status;
 		Date createDate;
 		
 	
 		
-		public User(int id, String userName,String name, String email, String password, String contact, String role, String status,
+		public User(String userName,String name, String email, String password, String contact, String role, String status,
 				Date createDate) {
-			Id = id;
-			UserName = userName;
-			Name=name;
-			Email = email;
-			Password = password;
-			Contact = contact;
-			Role = role;
-			Status = status;
+			this.username = userName;
+			this.name=name;
+			this.email = email;
+			this.password = password;
+			this.mobile = contact;
+			this.role = role;
+			this.status = status;
 			this.createDate = createDate;
 		}
 		public String getName() {
-			return Name;
+			return this.name;
 		}
 		public void setName(String name) {
-			Name = name;
+			this.name = name;
 		}
 		public String getPassword() {
-			return Password;
+			return this.password;
 		}
 		public void setPassword(String password) {
-			Password = password;
+			this.password = password;
 		}
 		
 		public Date getCreateDate() {
-			return createDate;
+			return this.createDate;
 		}
 		public void setCreateDate(Date createDate) {
 			this.createDate = createDate;
@@ -55,45 +54,45 @@ public class User {
 			Id = id;
 		}
 		public String getUserName() {
-			return UserName;
+			return this.username;
 		}
 		public void setUserName(String userName) {
-			UserName = userName;
+			this.username = userName;
 		}
 		
 		public String getEmail() {
-			return Email;
+			return this.email;
 		}
 		public void setEmail(String email) {
-			Email = email;
+			this.email = email;
 		}
 		
 		public String getContact() {
-			return Contact;
+			return this.mobile;
 		}
 		public void setContact(String contact) {
-			Contact = contact;
+			this.mobile = contact;
 		}
 		
 		public String getRole() {
-			return Role;
+			return this.role;
 		}
 		public void setRole(String role) {
-			Role = role;
+			this.role = role;
 		}
 		public String isStatus() {
-			return Status;
+			return this.status;
 		}
 		public void setStatus(String status) {
-			Status = status;
+			this.status = status;
 		}
 		@Override
 		public String toString() {
-			return "User [Id=" + Id + ", UserName=" + UserName + ",Name  "+ Name +" Email=" + Email + ", Password=" + Password
-					+ ", Contact=" + Contact + ", Role=" + Role + ", Status=" + Status + ", createDate=" + createDate
-					+ "]";
+			return "User [Id=" + Id + ", username=" + username + ", name=" + name + ", email=" + email + ", password="
+					+ password + ", mobile=" + mobile + ", role=" + role + ", status=" + status + ", createDate="
+					+ createDate + "]";
 		}
-		
+
 	
 		
 }
