@@ -1,5 +1,6 @@
 package com.Controller;
 
+import java.util.Random;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
@@ -11,24 +12,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dao.CustomerDao;
-import com.daoImpl.CustomerDaoImpl;
+import com.dao.CustomerAccountDao;
+import com.daoImpl.CustomerAccountDaoImpl;
+import com.model.Account;
 import com.model.Customer;
+import com.model.*;
 
 /**
  * Servlet implementation class CustomerServlet
  */
-@WebServlet("/registerCustomer")
-public class RegisterCustomerServlet extends HttpServlet {
+@WebServlet("/customerAccount")
+public class CustomerAccountServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    CustomerDao customerDao;
+    CustomerAccountDao customerDao;
 
     public void init() {
-        customerDao = new CustomerDaoImpl();
+        customerDao = new CustomerAccountDaoImpl();
     }
 
-    public RegisterCustomerServlet() {
+    public CustomerAccountServlet() {
         super();
     }
 
@@ -54,25 +57,35 @@ public class RegisterCustomerServlet extends HttpServlet {
     // Method to insert customer data into the database
     private void insertCustomerData(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         // Collecting data from the request parameters
-        String username = request.getParameter("username");
+        String username = request.getParameter("name");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
         String address = request.getParameter("address");
-        String contact = request.getParameter("contact");
-        int creditScore = Integer.parseInt(request.getParameter("creditscore")) ;
+        String mobile = request.getParameter("mobile");
+        int creditScore = 0;
         String aadhaar = request.getParameter("aadhaar");
-        String panCard = request.getParameter("panCard");
-        String accountNo = request.getParameter("accountNo");
+        String panCard = request.getParameter("pan_number");
+        String marital_status = request.getParameter("marital_status");
+        String occupation = request.getParameter("occupation");
+        String employer = request.getParameter("employer");
+        String employerAddress = request.getParameter("employerAddress");
+        
+        
+        Random random = new Random();
+        String accountNo = String.valueOf(100000000 + random.nextInt(900000000));
         String accountType = request.getParameter("accountType");
         double balance = Double.parseDouble(request.getParameter("balance"));
+        
+        String password = panCard.substring(0, 4) + aadhaar.substring(aadhaar.length() - 4);
        
         // Creating customer object
-        Customer customer = new Customer(1,username, name, email, password, contact, "Customer","ACTIVE",null,creditScore,
-        		aadhaar,panCard,accountNo,accountType,balance,address);
+        Customer customer = new Customer(username, name, email, password, mobile, "Customer","ACTIVE", null,creditScore,
+        		aadhaar,panCard,marital_status, occupation, employer, employerAddress,address);
+        
+        Account account = new Account(accountNo, accountType, balance, customer.getId(), new Date());
        
         // Registering the customer
-        int result = customerDao.registerCustomer(customer);
+        int result = customerDao.registerCustomer(customer, account);
         if (result == 1) {
             response.getWriter().append("Customer Registered Successfully");
         } else {
