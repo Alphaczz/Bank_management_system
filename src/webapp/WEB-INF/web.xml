@@ -8,6 +8,8 @@
 
 
 		<welcome-file>transacton.jsp</welcome-file>
+		<welcome-file>transfer.jsp</welcome-file>
+		<welcome-file>transactionHistory.jsp</welcome-file>
 
 	</welcome-file-list>
 
