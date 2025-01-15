@@ -7,9 +7,15 @@
 	<welcome-file-list>
 
 
-		<welcome-file>transacton.jsp</welcome-file>
 		<welcome-file>transfer.jsp</welcome-file>
 		<welcome-file>transactionHistory.jsp</welcome-file>
+		<welcome-file>customerDashboard.jsp</welcome-file>
+		<welcome-file>customerLogin.jsp</welcome-file>
+		<welcome-file>employeeDashboard.jsp</welcome-file>
+		<welcome-file>employeeLogin.jsp</welcome-file>
+		<welcome-file>landingPage.jsp</welcome-file>
+		<welcome-file>loanApp.jsp</welcome-file>
+		<welcome-file>transactionManagement.jsp</welcome-file>
 
 	</welcome-file-list>
 

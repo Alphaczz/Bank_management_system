@@ -115,7 +115,7 @@
         <div class="logo">Bank Dashboard</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.jsp">
+                <a class="nav-link" href="customerDashboard.jsp">
                     <i class="fas fa-home"></i> Dashboard
                 </a>
             </li>
@@ -124,19 +124,15 @@
                     <i class="fas fa-exchange-alt"></i> Transactions
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="accounts.jsp">
-                    <i class="fas fa-users"></i> Accounts
-                </a>
-            </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="transfer.jsp">
                     <i class="fas fa-paper-plane"></i> Transfer
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="reports.jsp">
-                    <i class="fas fa-chart-bar"></i> Reports
+                <a class="nav-link" href="LoanApp.jsp">
+                    <i class="fas fa-chart-bar"></i> Loan
                 </a>
             </li>
             <li class="nav-item mt-auto">
@@ -158,13 +154,7 @@
                     <small>Active</small>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <h4>Pending Transfers</h4>
-                    <div class="number">45</div>
-                    <small>Awaiting Review</small>
-                </div>
-            </div>
+            
             <div class="col-md-4">
                 <div class="stat-card">
                     <h4>Total Accounts</h4>
